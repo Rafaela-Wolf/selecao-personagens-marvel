@@ -6,16 +6,28 @@ personagens.forEach((personagem,) => {
 
         if(idSelecionado === 'ultron') return;
 
-        const personagemSelecionado = document.querySelector('.selecionado');
-        personagemSelecionado.classList.remove('selecionado');
-        personagem.classList.add('selecionado');
+        selecionarPersonagem(personagem);
 
-        const imagemJogador1 = document.getElementById('personagem-jogador-1');
-        imagemJogador1.src = `src/imagens/${idSelecionado}.png`;
+        selecionarImagemJogador1(idSelecionado);
 
-        const nomeJogador1 = document.getElementById('nome-jogador-1');
-        const nomeSelecionado = personagem.getAttribute('data-name');
-        nomeJogador1.innerHTML = nomeSelecionado;
+        mudarInfosJogador(personagem);
     })
 })
+
+function mudarInfosJogador(personagem) {
+    const nomeJogador1 = document.getElementById('nome-jogador-1');
+    const nomeSelecionado = personagem.getAttribute('data-name');
+    nomeJogador1.innerHTML = nomeSelecionado;
+}
+
+function selecionarImagemJogador1(idSelecionado) {
+    const imagemJogador1 = document.getElementById('personagem-jogador-1');
+    imagemJogador1.src = `assets/imagens/${idSelecionado}.png`;
+}
+
+function selecionarPersonagem(personagem) {
+    const personagemSelecionado = document.querySelector('.selecionado');
+    personagemSelecionado.classList.remove('selecionado');
+    personagem.classList.add('selecionado');
+}
 
